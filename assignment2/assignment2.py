@@ -56,3 +56,9 @@ def employee_find_2(employee_id):
 
 print(employee_find_2(6))
 
+# Task 7: Sort the Rows by last_name Using a Lambda
+def sort_by_last_name():
+    employees["rows"].sort(key = lambda row: row[column_index("last_name")])
+    return employees["rows"]
+
+print(sort_by_last_name())
