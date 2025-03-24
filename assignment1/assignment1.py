@@ -1,6 +1,6 @@
 # Task 1: Hello
 def hello():
-    return("Hello!")
+    return "Hello!"
 hello()
 
 # Task 2: Greet with a Formatted String
@@ -11,29 +11,19 @@ greet("John")
 # Task 3: Calculator
 def calc(num1, num2, operation="multiply"):
     try:
-        match operation:
-            case "add":
-                result = num1 + num2
-            case "subtract":
-                result = num1 - num2
-            case "multiply":
-                result = num1 * num2
-            case "divide":
-                result = num1 / num2
-            case "modulo":
-                result = num1 % num2
-            case "int_divide":
-                result = num1 // num2
-            case "power":
-                result = num1 ** num2
-            case _:
-                return "Invalid operation!"
-        print (f"The result for {operation} with {num1} and {num2} is: {result}")
-        return result
-    except ZeroDivisionError:
-        return("You can't divide by 0!")
+        operations = {
+            "add": num1 + num2,
+            "subtract": num1 - num2,
+            "multiply": num1 * num2,
+            "divide": num1 / num2 if num2 != 0 else "You can't divide by 0!",
+            "modulo": num1 % num2 if num2 != 0 else "Error: Modulo by zero",
+            "int_divide": num1 // num2 if num2 != 0 else "Error: Integer division by zero",
+            "power": num1 ** num2
+        }
     except TypeError:
         return("You can't multiply those values!")
+    return operations.get(operation, "Error: Invalid operation")
+    
 try: 
     print("Select an operator: add, subtract, multiply, divide, modulo, int_divide and power. Else mulitply will be used as default")
     num1 = input("Enter first number: " )
@@ -191,7 +181,7 @@ def pig_latin(text):
                 rest = word[first_vowel_index:]
                 pig_latin_words.append(rest + consonants + "ay")
 
-    return " ".join(pig_latin_words)
+    return " ".join(pig_latin_words).lower()
 
 print(pig_latin("apple"))  
 print(pig_latin("string")) 
@@ -199,5 +189,4 @@ print(pig_latin("queen"))
 print(pig_latin("the quick brown fox")) 
 print(pig_latin("rhythm")) 
 print(pig_latin("square")) 
-        
-    
+print(pig_latin("Square")) 
