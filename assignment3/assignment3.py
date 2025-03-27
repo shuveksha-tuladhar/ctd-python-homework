@@ -36,3 +36,18 @@ print(json_employees)
 more_employees = pd.concat([task2_employees, json_employees], ignore_index=True)
 print("Combined employees data frames:")
 print(more_employees)
+
+# Task 3: Data Inspection - Using Head, Tail, and Info Methods
+first_three = more_employees.head(3)
+last_two = more_employees.tail(2)
+employee_shape = more_employees.shape
+employee_info = more_employees.info()
+
+print("task 3")
+print(first_three)
+print(last_two)
+print(employee_shape)
+print(employee_info)
+
+
+
