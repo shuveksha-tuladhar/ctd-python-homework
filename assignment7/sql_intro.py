@@ -1,10 +1,15 @@
+import pandas as pd
 import sqlite3
 
 def print_result(result, message):
     print(message)
     for row in result:
         print(row)
-
+        
+def print_query_results(conn, query, message):
+    df = pd.read_sql_query(query, conn)
+    print(f"\n{message}\n{df}\n")
+    
 def add_publisher(cursor, publisher_name):
     try:
         cursor.execute("INSERT INTO Publishers (publisher_name) VALUES (?)", (publisher_name,))
@@ -130,5 +135,20 @@ with sqlite3.connect("../db/magazines.db") as conn:
         print_result(cursor.execute("SELECT * FROM Subscribers").fetchall(), "Subscribers Table:")
         print_result(cursor.execute("SELECT * FROM Subscriptions").fetchall(), "Subscriptions Table:")
 
+        # Task 4: Write SQL Queries
+        query_1 = "SELECT * FROM Subscribers;"
+        print_query_results(conn, query_1, "All Subscribers:")
+
+        query_2 = "SELECT * FROM Magazines ORDER BY magazine_name;"
+        print_query_results(conn, query_2, "All Magazines (Sorted by Name):")
+
+        query_3 = """
+        SELECT m.*, p.publisher_name
+        FROM Magazines m
+        JOIN Publishers p ON m.publisher_id = p.publisher_id
+        WHERE p.publisher_name = 'Time Life';
+        """
+        print_query_results(conn, query_3, "Magazines Published by 'Time Life':")
+    
     except sqlite3.Error as e:
         print(f"An error occurred: {e}")
