@@ -1,0 +1,7 @@
+Challenges I faced:
+Initially, I tried using an absolute XPath for just the first item, which only returned one result. I mistakenly used find_element instead of find_elements for all list items. There was confusion around accessing the correct child <a> and <strong> tags.
+
+How I resolved them:
+- I used browser DevTools to inspect the HTML structure and found that all 10 items are inside the second <ul> under #sec-main.
+- I used find_elements to loop through each <li> element.
+- I used TAG_NAME to get the <a> tag and extracted both text and href.
