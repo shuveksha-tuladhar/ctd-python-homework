@@ -1,0 +1,3 @@
+Websites use robots.txt files to communicate with web crawlers and instruct them on which parts of the site they are permitted or forbidden to access. 
+Its primary purpose is to manage crawler traffic, prevent server overload, and avoid the indexing of private, irrelevant, or duplicate content by search engines. 
+By respecting these directives, robots.txt promotes ethical scraping by allowing website owners to define boundaries and ensuring that automated access is conducted in a responsible and non-intrusive manner.
