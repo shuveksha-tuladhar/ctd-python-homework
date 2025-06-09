@@ -1,0 +1,3 @@
+Function: say_hello | Arguments: args=(), kwargs={} | Returned: None
+Function: accept_args | Arguments: args=(1, 2, 3, 'hello'), kwargs={} | Returned: True
+Function: return_decorator | Arguments: args=(), kwargs={'name': 'Alice', 'role': 'Developer'} | Returned: <function logger_decorator at 0x1002b76a0>
